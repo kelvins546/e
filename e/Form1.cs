@@ -24,7 +24,7 @@ namespace e
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = "nice to meet u";
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -51,6 +51,8 @@ namespace e
             if (UserExists(email, password))
             {
                 MessageBox.Show("Login successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form3 form = new Form3();
+                form.Show();
             }
             else
             {

@@ -130,5 +130,12 @@ private void label2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form4 form = new Form4();
+            form.Show();
+            this.Hide();
+        }
     }
 }
