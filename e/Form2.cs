@@ -15,10 +15,9 @@ namespace e
 {
     public partial class Form2 : Form
     {
-        public static class UserManager
-        {
-            public static List<User> Users { get; } = new List<User>();
-        }
+        public string Email { get; set; }
+        public string Password { get; set; }
+
 
         public Form2()
         {
@@ -44,13 +43,12 @@ namespace e
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Create an instance of the login form
+           
             Form1 loginForm = new Form1();
 
-            // Hide the sign-up form
+            
             this.Hide();
-
-            // Show the login form
+            loginForm.Email = EmailTextBox.Text;
             loginForm.Show();
         }
 
@@ -74,44 +72,21 @@ namespace e
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
             string email = textBox1.Text;
             string password = textBox2.Text;
 
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both email and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+ 
 
-            // Check if the email already exists
-            if (UserExists(email))
-            {
-                MessageBox.Show("Email already exists. Please choose another email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            UserManager.Users.Add(new User { Email = email, Password = password });
-           
-            Console.WriteLine($"UserManager.Users count after signup: {UserManager.Users.Count}");
 
             MessageBox.Show("Account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private bool UserExists(string email)
-        {
-            return UserManager.Users.Exists(u => u.Email == email);
-        }
-
-
-        public class User
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
 
 
 
-private void label2_Click(object sender, EventArgs e)
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -137,5 +112,5 @@ private void label2_Click(object sender, EventArgs e)
             form.Show();
             this.Hide();
         }
-    }
-}
+}    }
+
