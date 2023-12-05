@@ -13,10 +13,12 @@ namespace e
 {
     public partial class Form1 : Form
     {
-        public static class UserManager
+        public void ReceiveDataFromForm2(string Email)
         {
-            public static List<User> Users { get; } = new List<User>();
+            MessageBox.Show($"Received data from Form2: {Email}");
         }
+
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace e
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = "nice to meet u";
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -41,32 +43,12 @@ namespace e
             string email = textBox1.Text;
             string password = textBox2.Text;
 
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both email and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // Debug statement
-            Console.WriteLine($"UserManager.Users count during login: {UserManager.Users.Count}");
-            if (UserExists(email, password))
-            {
-                MessageBox.Show("Login successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Invalid email or password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private bool UserExists(string email, string password)
-        {
-            return UserManager.Users.Exists(u => u.Email == email && u.Password == password);
+            Form2 form = new Form2();
+            form.Show();
+            form.Email = Email.textBox1.Text;
+
         }
 
-        public class User
-        {
-            public string Email { get; set; }
-            public string Password { get; set; }
-        }
 
 
         private void label2_Click(object sender, EventArgs e)
@@ -163,6 +145,11 @@ namespace e
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
